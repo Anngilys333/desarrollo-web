@@ -2,327 +2,433 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bogotá Vibes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bogotá Vibes</title>
+  <link rel="icon" type="image/png" href="Imagenes/Logo1-modified.png"
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <style>
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #393737;
-            color: white;
-            background-size: 100% 100%;
-        }
+  <style>
+    /* =======================
+       Estilos Generales
+       ======================= */
+    body {
+        font-family: 'Rajdhani', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #393737;
+      color: white;
+      background-size: 100% 100%;
+      overflow-x: hidden;
+    }
 
-        header{
-            position: sticky;
-            top:0;
-            z-index: 999999;
-            display: block;
-        }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999999;
+      display: block;
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #601F5C;
-            padding: 0 20px;
-            height: 10vh;
-        }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #601F5C;
+      padding: 0 20px;
+      height: 10vh;
+    }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 24px;
-            font-weight: bold;
-            padding: 0;
-        }
-        .logo img{
-            margin-right: 1em;
-            height: 50px;
-            width: 50px;
-            margin-left: 1em;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 0;
+    }
 
-        p{
-            margin: auto !important;
-        }
+    .logo img {
+      margin-right: 1em;
+      height: 50px;
+      width: 50px;
+      margin-left: 1em;
+    }
 
-        dl, ol, ul {
-            margin-top: auto !important;
-            margin-bottom: auto !important;
-        }
+    p {
+      margin: auto !important;
+    }
 
-        .logo p{
-            font-size: 1.5em;
-            font-weight: 800;
-        }
+    dl,
+    ol,
+    ul {
+      margin-top: auto !important;
+      margin-bottom: auto !important;
+    }
 
-        nav ul {
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 700;
-            list-style: none;
-            display: flex;
-            gap: 50px;
-            margin-right: 2em;
-        }
+    .logo p {
+      font-size: 1.5em;
+      font-weight: 800;
+    }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
+    nav ul {
+      font-weight: 700;
+      list-style: none;
+      display: flex;
+      gap: 50px;
+      margin-right: 2em;
+    }
 
-        nav ul li{
-            padding: 10px 25px 10px 25px;
-        }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    nav ul li {
+      padding: 10px 25px;
+    }
+
+    nav ul li:hover {
+      background-color: #4F154C;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      position: relative;
+    }
+
+    .hero img {
+      width: 100vw;
+      height: 90vh;
+    }
+
+    .hero button {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #601F5C;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .events {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      background-color: #222;
+    }
+
+    .event {
+      text-align: center;
+      max-width: 300px;
+    }
+
+    .event img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    footer {
+  background-color: #601F5C;
+  padding: 20px;
+  text-align: center;
+  
+}
+
+/* Contenedor principal del footer con Flexbox */
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px; /* ancho máximo opcional */
+  margin: 0 auto;
+}
+
+/* Sección del logo en la izquierda */
+.footer-logo img {
+  height: 80px; /* ajusta el tamaño según necesites */
+}
+
+/* Sección de enlaces */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.footer-links ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Sección de redes sociales a la derecha */
+.social {
+  display: flex;
+  align-items: center;
+}
+
+.social a img {
+  width: 30px;
+  margin: 0 5px;
+}
 
 
-        nav ul li:hover {
-            background-color: #4F154C;
-            cursor: pointer;
-        }
+    .btn {
+      padding: 10px 25px;
+      background: #4F154C;
+      border-radius: 4px;
+    }
 
-        .hero {
+    .btn:hover {
+      background: #3c0939;
+    }
 
-            text-align: center;
-            position: relative;
-        }
+    /* =======================
+       Estilos del Slider
+       ======================= */
+    .slider-container {
+      position: relative;
+      width: 1000px;              /* Ancho total mayor que 920px */
+      padding: 0 40px;            /* 40px a cada lado: 1000 - (40*2) = 920px de área visible */
+      box-sizing: border-box;     /* Para que el padding se incluya en el ancho total */
+      margin: 50px auto;
+      overflow: hidden;
+    }
 
-        .hero img {
-            width: 100vw;
-            height: 90vh;
-        }
+    .slider {
+      display: flex;
+      gap: 10px;
+      transition: transform 0.5s ease;
+    }
 
-        .hero button {
-            position: absolute;
-            top: 80%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #601F5C;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    .slide {
+      min-width: 300px;
+      box-sizing: border-box;
+      position: relative;
+    }
 
-        .events {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            background-color: #222;
-        }
+    .slide img {
+      width: 100%;
+      display: block;
+    }
 
-        .event {
-            text-align: center;
-            max-width: 300px;
-        }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      text-align: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
 
-        .event img {
-            width: 100%;
-            border-radius: 10px;
-        }
+    .slide:hover .overlay {
+      opacity: 1;
+    }
 
-        footer {
-            background-color: #601F5C;
-            text-align: center;
-            padding: 20px;
-        }
+    /* Botones de navegación del slider */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 1;
+    }
 
-        .footer-content ul {
-            list-style: none;
-            padding: 0;
-        }
+    #prev {
+      left: 10px;
+    }
 
-        .footer-content ul li {
-            display: inline;
-            margin: 0 10px;
-        }
+    #next {
+      right: 10px;
+    }
 
-        .footer-content ul li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .social {
-            text-align: right;
-            margin-top: 10px;
-        }
-
-        .social a img {
-            width: 30px;
-            margin: 0 5px;
-        }
-
-        .btn{
-            padding: 10px 25px 10px 25px;
-            background: #4F154C;
-            border-radius: 4px;
-        }
-        .btn:hover{
-            padding: 10px 25px 10px 25px;
-            background: #3c0939;
-        }
-        .carousel-item {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .overlay-container {
-            position: relative;
-            width: 30%;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-        
-        .overlay-container img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        
-        .overlay-container:hover img {
-            transform: scale(1.1);
-        }
-        
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .overlay-container:hover .overlay {
-            opacity: 1;
-        }
-        
-    </style>
+    .none{
+      text-decoration: none;
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                 <img src="Imagenes/Logo1-modified.png" alt="Logo">
-                 <p>Bogotá Vibes</p>
-            </div>
-            <ul>
-                <li><a href="Aboutus.html"></a>About us</a></li>
-                <li><a href="Login.html">Log in</a></li>
-                <li class="btn"><a href="Signin.html">Sign in</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section>
-        <div class="hero">
-            <img src="Imagenes/ConciertoINDEX.png" alt="Concierto en vivo">
-            <a href="index2.html"><button>Comencemos</button></a>
-        </div>
-    </section>
-    <section class="container mt-5">
-        <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner" id="carouselItems">
-                <!-- Las imágenes se generarán dinámicamente con JavaScript -->
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="footer-content">
-            <ul>
-                <li><a href="#">Terms and conditions</a></li>
-                <li><a href="#">Privacy policy</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Contact us</a></li>
-            </ul>
-            <div class="social">
-                <a href="#"><img src="Imagenes/whatsapp.png" alt="WhatsApp"></a>
-                <a href="#"><img src="Imagenes/instagram.png" alt="Instagram"></a>
-                <a href="#"><img src="Imagenes/facebook.png" alt="Facebook"></a>
-                <a href="#"><img src="Imagenes/tik-tok.png" alt="TikTok"></a>
-            </div>
-        </div>
-        <p>Copyright © 2025 Anngilys Rico</p>
-    </footer>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const images = [
-                { src: "./Imagenes/Ej1.jpg", title: "Concierto en Bogotá", desc: "Música en vivo y fiesta.", filter: "hue-rotate(0deg)" },
-                { src: "./Imagenes/Ej1.jpg", title: "Festival Electrónico", desc: "Beats increíbles y luces.", filter: "hue-rotate(45deg)" },
-                { src: "./Imagenes/Ej1.jpg", title: "Rock al Parque", desc: "El mejor rock en vivo.", filter: "hue-rotate(90deg)" },
-                { src: "./Imagenes/Ej1.jpg", title: "Jazz Night", desc: "Noche de jazz y arte.", filter: "hue-rotate(135deg)" },
-                { src: "./Imagenes/Ej1.jpg", title: "Feria Cultural", desc: "Exposición de arte y cultura.", filter: "hue-rotate(180deg)" },
-                { src: "./Imagenes/Ej1.jpg", title: "Indie Fest", desc: "La mejor música independiente.", filter: "hue-rotate(225deg)" }
-            ];
-        
-            const carouselItems = document.getElementById("carouselItems");
-            const itemsPerSlide = 3;
-            let numSlides = Math.ceil(images.length / itemsPerSlide);
-        
-            for (let i = 0; i < numSlides; i++) {
-                let itemDiv = document.createElement("div");
-                itemDiv.classList.add("carousel-item");
-                if (i === 0) itemDiv.classList.add("active");
-        
-                let rowDiv = document.createElement("div");
-                rowDiv.classList.add("d-flex", "justify-content-center", "gap-3");
-        
-                for (let j = i * itemsPerSlide; j < (i * itemsPerSlide) + itemsPerSlide && j < images.length; j++) {
-                    let imgContainer = document.createElement("div");
-                    imgContainer.classList.add("overlay-container");
-        
-                    let img = document.createElement("img");
-                    img.src = images[j].src;
-                    img.alt = images[j].title;
-                    img.style.filter = images[j].filter; // Aplica un filtro distinto a cada imagen
-        
-                    let overlay = document.createElement("div");
-                    overlay.classList.add("overlay");
-        
-                    let title = document.createElement("h3");
-                    title.innerText = images[j].title;
-        
-                    let desc = document.createElement("p");
-                    desc.innerText = images[j].desc;
-        
-                    overlay.appendChild(title);
-                    overlay.appendChild(desc);
-                    imgContainer.appendChild(img);
-                    imgContainer.appendChild(overlay);
-                    rowDiv.appendChild(imgContainer);
-                }
-                itemDiv.appendChild(rowDiv);
-                carouselItems.appendChild(itemDiv);
-            }
-        });
-        
-    </script>
-    
-        
+  <header>
+    <nav>
+      <a class="none" href="./index.html">
+      <div class="logo">
+        <img src="Imagenes/Logo1-modified.png" alt="Logo">
+        <p>Bogotá Vibes</p>
+      </div>
+    </a>      
+      <ul>
+        <li><a href="Aboutus.html">About us</a></li>
+        <li><a href="Login.html">Log in</a></li>
+        <li class="btn"><a href="Signin.html">Sign in</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <div class="hero">
+      <img src="Imagenes/ConciertoINDEX.png" alt="Concierto en vivo">
+      <a href="index2.html"><button>Comencemos</button></a>
+    </div>
+  </section>
+
+  <section class="container mt-5">
+    <!-- Sección del Slider -->
+    <div class="slider-container" id="sliderContainer">
+      <button id="prev" class="slider-btn">&lt;</button>
+      <div class="slider" id="slider">
+        <!-- Las imágenes y el overlay se insertan mediante JavaScript -->
+      </div>
+      <button id="next" class="slider-btn">&gt;</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="Imagenes/Logo1-modified.png" alt="Logo">
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Terms and conditions</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+      </div>
+      <div class="social">
+        <a href="#"><img src="Imagenes/whatsapp.png" alt="WhatsApp"></a>
+        <a href="#"><img src="Imagenes/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="Imagenes/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="Imagenes/tik-tok.png" alt="TikTok"></a>
+      </div>
+    </div>
+    <p>Copyright © 2025 Anngilys Rico</p>
+  </footer>
+  
+
+  <!-- =======================
+       JavaScript del Slider
+       ======================= -->
+  <script>
+    // Array de imágenes con su descripción
+    const images = [
+      { url: './Imagenes/Ej1.jpg', description: 'Descripción de Imagen 1' },
+      { url: './Imagenes/Ej1.jpg', description: 'Descripción de Imagen 2' },
+      { url: './Imagenes/Ej1.jpg', description: 'Descripción de Imagen 3' },
+      { url: './Imagenes/Ej1.jpg', description: 'Descripción de Imagen 4' },
+      { url: './Imagenes/Ej1.jpg', description: 'Descripción de Imagen 5' },
+      { url: './Imagenes/Ej1.jpg', description: 'Descripción de Imagen 6' },
+      { url: './Imagenes/Ej1.jpg', description: 'Descripción de Imagen 7' }
+    ];
+
+    const slider = document.getElementById('slider');
+    let currentIndex = 0; // Índice del primer slide visible
+    const gap = 10;         // Debe coincidir con el gap definido en CSS
+    const slideWidth = 300; // Ancho de cada slide
+    const rotationTime = 3000; // Tiempo de rotación (3 segundos)
+    let autoRotateInterval = null;
+
+    // Generar cada slide dinámicamente
+    images.forEach(item => {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+
+      const img = document.createElement('img');
+      img.src = item.url;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'overlay';
+      overlay.innerText = item.description;
+
+      slide.appendChild(img);
+      slide.appendChild(overlay);
+      slider.appendChild(slide);
+    });
+
+    // Actualiza la posición del slider
+    const updateSlider = () => {
+      slider.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
+    };
+
+    // Función para ir al siguiente slide
+    const nextSlide = () => {
+      if (currentIndex >= images.length - 3) {
+        currentIndex = 0;
+      } else {
+        currentIndex++;
+      }
+      updateSlider();
+    };
+
+    // Función para ir al slide anterior
+    const prevSlide = () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = images.length - 3;
+      }
+      updateSlider();
+    };
+
+    document.getElementById('next').addEventListener('click', () => {
+      nextSlide();
+      resetAutoRotate();
+    });
+    document.getElementById('prev').addEventListener('click', () => {
+      prevSlide();
+      resetAutoRotate();
+    });
+
+    const startAutoRotate = () => {
+      if (autoRotateInterval === null) {
+        autoRotateInterval = setInterval(nextSlide, rotationTime);
+      }
+    };
+
+    const stopAutoRotate = () => {
+      if (autoRotateInterval !== null) {
+        clearInterval(autoRotateInterval);
+        autoRotateInterval = null;
+      }
+    };
+
+    const resetAutoRotate = () => {
+      stopAutoRotate();
+      startAutoRotate();
+    };
+
+    startAutoRotate();
+
+    // Pausar la auto-rotación al pasar el ratón sobre el slider y reanudar al salir
+    document.getElementById('sliderContainer').addEventListener('mouseenter', stopAutoRotate);
+    document.getElementById('sliderContainer').addEventListener('mouseleave', startAutoRotate);
+  </script>
 </body>
 
 </html>
