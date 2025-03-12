@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bogotá Vibes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/3b161c540c.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #393737;
+          color: white;
+          background-size: 100% 100%;
+          overflow-x: hidden;
+        }
+        header{
+            position: sticky;
+            top:0;
+            z-index: 999999;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #601F5C;
+            padding: 0 20px;
+            height: 10vh;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 0;
+        }
+        .logo img{
+            margin-right: 1em;
+            height: 50px;
+            width: 50px;
+            margin-left: 1em;
+        }
+
+        p{
+            margin: auto !important;
+        }
+
+        dl, ol, ul {
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+        }
+
+        .logo p{
+            font-size: 1.5em;
+            font-weight: 800;
+        }
+
+        nav ul {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            list-style: none;
+            display: flex;
+            gap: 50px;
+            margin-right: 2em;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li{
+            padding: 10px 25px 10px 25px;
+        }
+
+
+        nav ul li:hover {
+            background-color: #4F154C;
+            cursor: pointer;
+        }
+        .btn {
+            padding: 10px 25px;
+            background: #4F154C;
+            border-radius: 4px;
+          }
+      
+          .btn:hover {
+            background: #3c0939;
+          }
+
+        .hero {
+
+            text-align: center;
+            position: relative;
+        }
+
+        .hero img {
+            width: 100vw;
+            height: 90vh;
+        }
+
+        .hero button {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #601F5C;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .events {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #222;
+        }
+
+        .event {
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .event img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    /* =======================
+       Estilos del footer
+       ======================= */
+        footer {
+            background-color: #601F5C;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-content ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        .footer-content ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .social a img {
+            width: 30px;
+            margin: 0 5px;
+        }
+        /* =======================
+       Estilos del about us
+       ======================= */
+        .about-container {
+            position: absolute;
+            top: 25%;
+            left: 10%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            width: 80%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .about-container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .about-text {
+            width: 50%;
+            padding: 20px;
+            text-align: left;
+        }
+        .about-title {
+            font-size: 7rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .about-description {
+            font-size: 2rem;
+            text-align: justify;
+        }
+        .mission-vision {
+            padding: 50px 10%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .section img {
+            width: 40%;
+            border-radius: 10px;
+        }
+        .section-text {
+            width: 60%;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .section-description {
+            font-size: 1rem;
+            margin-top: 10px;
+            text-align: justify;
+        }
+
+        .none{
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .mapTour {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 80vh; /* Altura del contenedor */
+    width: 100%; /* Ancho del contenedor */
+    margin: 0 auto; /* Centrar horizontalmente con margen automático */
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+  }
+  #viewDiv {
+    border-radius:10px ;
+    height: 80vh;
+    width: 95%;
+    margin: 0;
+    padding: 0;
+    margin-left: 1%;
+  }
+  .slideControls {
+    position:absolute;
+    top: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  #prevBtn {
+    left: 20px;
+  }
+  
+  .hidden {
+    display: none;
+}
+.nextButton {
+  position: absolute;
+  top:3%;
+  right: 5%;
+  width: 40px;
+  height: 40px;
+  background-color: #dddddd; /* Gris claro */
+  border-radius: 50%; /* Para que sea un círculo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px; /* Ajusta el margen según tus necesidades */
+  z-index: 11;
+}
+
+.nextButton:hover {
+  background-color: #cccccc; /* Cambia el color al pasar el ratón sobre el botón */
+}
+.cont-ocultar{
+  height: auto;
+  width: auto;
+}
+
+  #nextBtn {
+    right: 20px;
+  }
+  
+  /* Estilos para la leyenda */
+  .legend {
+    position: absolute;
+    bottom: 10px;
+    left: 6%;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    max-width: 200px;
+    max-height: 280px;
+    overflow-y: auto; 
+  }
+  
+  .legend h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: auto;
+    height: auto;
+  }
+  .legend-item label {
+    margin-left: 30px;
+    color: black;
+  }
+  
+  .legend-item span {
+    display:inline;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-right: 1em;
+    border-radius: 50%;
+  }
+  
+  /* Estilos para los detalles de la ubicación */
+  #locationDetails {
+    position: absolute;
+    top: 5%;
+    right: 70px;
+    z-index: 10;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 350px;
+    max-height: 450px; /* Establece la altura máxima deseada */
+    overflow-y: auto; /* Agrega un desplazamiento vertical cuando se excede la altura máxima */
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  #locationDetails h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+  }
+  
+  #locationImage img {
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  #locationTitle {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  
+  #locationReview {
+    font-size: 14px;
+    text-align: justify;
+  }
+
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a class="none" href="./index2.html">
+                <div class="logo">
+                  <img src="Imagenes/Logo1-modified.png" alt="Logo">
+                  <p>Bogotá Vibes</p>
+                </div>
+              </a>      
+            <ul>
+                <li><a href="Aboutus2.html">About us</a></li>
+                <li><a href="Events.html">Events</a></li>
+                <li><a href="Map.html">Map</a></li>
+                <li><a href="News.html">News</a></li>
+                <li class="btn"><a href="Signin.html">Log out</a></li>
+            </ul>
+            
+        </nav>
+    </header>
+    <section>
+        <div class="hero">
+            <img src="Imagenes/ConciertoINDEX.png" alt="Concierto en vivo">
+            <div class="about-container" id="aboutContainer">
+                <div class="about-text">
+                    <h1 class="about-title">Map</h1>
+                </div>
+            </div>
+    </section>
+        <section class="mapTour">
+            <!-- Contenedor principal de MapTour (mapa) -->
+            <div id="viewDiv"></div>
+            <!-- Botones de siguiente y anterior -->
+        <div class="slideControls" id="prevBtn">&lt;</div>
+        <div class="slideControls" id="nextBtn">&gt;</div>
+        <!-- Leyenda integrada -->
+        <div class="legend">
+          <!-- Titulo de leyenda -->
+          <h3>Leyenda</h3>
+          <!-- Items de leyenda (agregar manualmente de necesitarse mas) -->
+          <div class="legend-item">
+            <!-- Modificar coloraciones con "background-color: #FF0000;" -->
+            <span style="background-color: #FF0000;"></span> <label id="l1"></label>
+          </div>
+          <div class="legend-item">
+            <span style="background-color: #00FF00;"></span> <label id="l2"></label>
+          </div>
+          <div class="legend-item">
+            <span style="background-color: #0000FF;"></span> <label id="l3"></label>
+          </div>
+          <div class="legend-item">
+            <span style="background-color: #FFFF00;"></span> <label id="l4"></label>
+          </div>
+          <div class="legend-item">
+            <span style="background-color: #00FFFF;"></span> <label id="l5"></label>
+          </div>
+          <div class="legend-item">
+            <span style="background-color: #FF00FF;"></span> <label id="l6"></label>
+          </div>
+        </div>
+        <!-- Seccion de detalles (tarjeta de informacion) -->
+        <div class="cont-ocultar">
+        <div id="locationDetails">
+          <!-- Contenedor de imagen -->
+          <div id="locationImage"></div>
+          <!-- Contenedor de titulo -->
+          <div id="locationTitle"></div>
+          <!-- Contenedor de contenidos -->
+          <div id="locationReview"></div>
+          
+        </div>
+        <div class="nextButton" onclick="toggleLocationDetails()">»</div>
+       </div>
+        </section>
+   <!-- Script JavaScript para manejar la visibilidad de locationDetails -->
+   <script>
+       function toggleLocationDetails() {
+           var locationDetails = document.getElementById("locationDetails");
+           locationDetails.classList.toggle("hidden");
+       }
+   </script>
+          </section> 
+    </section>
+<script>
+    window.addEventListener("load", function() {
+        setTimeout(() => {
+            document.getElementById("aboutContainer").classList.add("show");
+        }, 300); // Se agrega un leve retraso para garantizar que se vea la animación
+    });
+</script>
+    <footer>
+        <div class="footer-content">
+            <ul>
+                <li><a href="#">Terms and conditions</a></li>
+                <li><a href="#">Privacy policy</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+            <div class="social">
+                <a href="#"><img src="Imagenes/whatsapp.png" alt="WhatsApp"></a>
+                <a href="#"><img src="Imagenes/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="Imagenes/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="Imagenes/tik-tok.png" alt="TikTok"></a>
+            </div>
+        </div>
+        <p>Copyright © 2025 Anngilys Rico</p>
+    </footer>
+    <script src="https://js.arcgis.com/4.25/"></script>
+<script src="Map.js"></script>
+</body>
+
+</html>
