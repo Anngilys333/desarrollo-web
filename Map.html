@@ -143,36 +143,43 @@
     /* =======================
        Estilos del footer
        ======================= */
-        footer {
-            background-color: #601F5C;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .footer-content ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-content ul li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        .footer-content ul li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .social {
-            text-align: right;
-            margin-top: 10px;
-        }
-
-        .social a img {
-            width: 30px;
-            margin: 0 5px;
-        }
+       footer {
+      background-color: #601F5C;
+      padding: 20px;
+      text-align: center;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-logo img {
+      height: 80px;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+    .footer-links ul li a {
+      color: white;
+      text-decoration: none;
+    }
+    .social {
+      display: flex;
+      align-items: center;
+    }
+    .social a img {
+      width: 30px;
+      margin: 0 5px;
+    }
         /* =======================
        Estilos del about us
        ======================= */
@@ -489,19 +496,24 @@
 </script>
     <footer>
         <div class="footer-content">
-            <ul>
+            <div class="footer-logo">
+              <img src="Imagenes/Logo1-modified.png" alt="Logo">
+            </div>
+            <div class="footer-links">
+              <ul>
                 <li><a href="#">Terms and conditions</a></li>
                 <li><a href="#">Privacy policy</a></li>
                 <li><a href="#">About us</a></li>
                 <li><a href="#">Contact us</a></li>
-            </ul>
-            <div class="social">
-                <a href="#"><img src="Imagenes/whatsapp.png" alt="WhatsApp"></a>
-                <a href="#"><img src="Imagenes/instagram.png" alt="Instagram"></a>
-                <a href="#"><img src="Imagenes/facebook.png" alt="Facebook"></a>
-                <a href="#"><img src="Imagenes/tik-tok.png" alt="TikTok"></a>
+              </ul>
             </div>
-        </div>
+            <div class="social">
+              <a href="#"><img src="Imagenes/whatsapp.png" alt="WhatsApp"></a>
+              <a href="#"><img src="Imagenes/instagram.png" alt="Instagram"></a>
+              <a href="#"><img src="Imagenes/facebook.png" alt="Facebook"></a>
+              <a href="#"><img src="Imagenes/tik-tok.png" alt="TikTok"></a>
+            </div>
+          </div>
         <p>Copyright © 2025 Anngilys Rico</p>
     </footer>
     <script src="https://js.arcgis.com/4.25/"></script>
