@@ -1,0 +1,271 @@
+/* =======================
+   Estilos generales
+   ======================= */
+
+* {
+    box-sizing: border-box;
+}
+
+/* =======================
+   Estilos del About Us
+   ======================= */
+
+.about-container {
+    position: absolute;
+    top: 50%;
+    left: 36%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.about-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-text {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.about-title {
+    font-size: 7rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* =======================
+   Estilos del Footer
+   ======================= */
+
+footer {
+    background-color: #601F5C;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo img {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.footer-links ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social a img {
+    width: 25px;
+    margin: 0 5px;
+}
+
+/* =======================
+   Botones generales
+   ======================= */
+.btn {
+    padding: 10px 25px;
+    background: #4F154C;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background: #3c0939;
+}
+
+.none {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* =======================
+   Slider
+   ======================= */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 300px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 10px;
+}
+
+.slide:hover .overlay {
+    opacity: 1;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1;
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}
+
+/* =======================
+   Conciertos destacados
+   ======================= */
+.concerts-section {
+    margin: 50px auto;
+}
+
+.concert-card {
+    border: 3px solid white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.concert-card img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: fill;
+}
+
+.ticket-button {
+    background-color: #601F5C;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* =======================
+   Media Queries
+   ======================= */
+
+@media (max-width: 1024px) {
+    
+    .about-container {
+        left: 30%;
+    }
+    
+    .about-title {
+        font-size: 5rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        left: 20%;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .about-title {
+        font-size: 3rem;
+    }
+
+    .slider-container {
+        padding: 0 10px;
+    }
+
+    .slide {
+        min-width: 250px;
+    }
+
+    .slider-btn {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .about-container {
+        flex-direction: column;
+        padding: 10px;
+        left: 15%;
+    }
+
+    .about-title {
+        font-size: 2.2rem;
+    }
+
+    .footer-logo img {
+        height: 50px;
+    }
+
+    .slide {
+        min-width: 200px;
+    }
+
+    .social a img {
+        width: 20px;
+    }
+}
