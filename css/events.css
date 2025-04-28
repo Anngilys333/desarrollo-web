@@ -1,0 +1,127 @@
+  
+/* =======================
+   Título Principal
+   ======================= */
+.title {
+  text-align: center;
+  padding: 20px;
+}
+.title h2 {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 4rem;
+  letter-spacing:.15em;
+}
+/* =======================
+   Tarjetas (Cards)
+   ======================= */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+.card-wrapper {
+  width: 23%; /* Aproximadamente 4 tarjetas por fila */
+  min-width: 250px;
+  perspective: 1000px;
+  margin-bottom: 4em;
+}
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  border-radius: 15px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+  cursor: pointer;
+  will-change: transform;
+
+}
+/* Se activa el flip cuando se pasa el mouse sobre el contenedor */
+.card-wrapper:hover .flip-card {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.flip-card-front {
+  background-size: cover;
+  background-position: center;
+}
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.flip-card-back {
+  background: linear-gradient(#790585, #000000);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  padding: 20px;
+  transform: rotateY(180deg);
+  font-family: 'Rajdhani', sans-serif;
+}
+.flip-card-back p {
+  margin-bottom: 15px;
+}
+/* Contenedor para las estrellas, ubicado fuera de la tarjeta */
+.rating-stars {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 5px;
+  font-size: 1.5rem; /* Ajusta según lo requieras */
+}
+/* =======================
+   Footer
+   ======================= */
+footer {
+  background-color: #601F5C;
+  padding: 20px;
+  text-align: center;
+}
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-logo img {
+  height: 80px;
+}
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links ul li {
+  display: inline;
+  margin: 0 10px;
+}
+.footer-links ul li a {
+  color: white;
+  text-decoration: none;
+}
+.social {
+  display: flex;
+  align-items: center;
+}
+.social a img {
+  width: 30px;
+  margin: 0 5px;
+}
