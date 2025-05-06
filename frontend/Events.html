@@ -75,71 +75,36 @@
 
   <!-- Script para generar las tarjetas desde el JSON -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Datos simulados (JSON)
-      const data = [
-        {
-          "imagen": "Imagenes/Ej1.jpg",
-          "descripcion": "Gran festival de música en vivo con artistas internacionales. Vive una experiencia inolvidable llena de ritmo y emoción.",
-          "puntaje": 5
-        },
-        {
-          "imagen": "Imagenes/Ej1.jpg",
-          "descripcion": "Espectacular concierto de rock con luces, sonido envolvente y un ambiente electrizante.",
-          "puntaje": 4
-        },
-        {
-          "imagen": "Imagenes/Ej1.jpg",
-          "descripcion": "Evento cultural con danza, teatro y exposiciones que te sumergen en la historia y el arte.",
-          "puntaje": 3
-        },
-        {
-          "imagen": "Imagenes/Ej1.jpg",
-          "descripcion": "Festival gastronómico que combina sabores exóticos y locales para deleitar tu paladar.",
-          "puntaje": 4
-        }, {
-          "imagen": "Imagenes/Ej1.jpg",
-          "descripcion": "Gran festival de música en vivo con artistas internacionales. Vive una experiencia inolvidable llena de ritmo y emoción.",
-          "puntaje": 5
-        },
-        {
-          "imagen": "Imagenes/Ej1.jpg",
-          "descripcion": "Espectacular concierto de rock con luces, sonido envolvente y un ambiente electrizante.",
-          "puntaje": 4
-        },
-        {
-          "imagen": "Imagenes/Ej1.jpg",
-          "descripcion": "Evento cultural con danza, teatro y exposiciones que te sumergen en la historia y el arte.",
-          "puntaje": 3
-        },
-        {
-          "imagen": "Imagenes/Ej1.jpg",
-          "descripcion": "Festival gastronómico que combina sabores exóticos y locales para deleitar tu paladar.",
-          "puntaje": 4
-        }
-      ];
-
+    document.addEventListener('DOMContentLoaded', async function () {
       const container = document.getElementById('cards-container');
 
-      data.forEach(item => {
-        const cardWrapper = document.createElement('div');
-        cardWrapper.className = 'card-wrapper';
+      try {
+        // Llamada a la API para obtener los eventos
+        const response = await fetch('/backend/api/events.php');
+        const data = await response.json();
 
-        cardWrapper.innerHTML = `
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <img src="${item.imagen}" alt="Imagen del evento">
+        data.forEach(item => {
+          const cardWrapper = document.createElement('div');
+          cardWrapper.className = 'card-wrapper';
+
+          cardWrapper.innerHTML = `
+            <div class="flip-card">
+              <div class="flip-card-front">
+                <img src="${item.image_url}" alt="Imagen del evento">
+              </div>
+              <div class="flip-card-back">
+                <p>${item.description}</p>
+              </div>
             </div>
-            <div class="flip-card-back">
-              <p>${item.descripcion}</p>
+            <div class="rating-stars">
+              ${renderStars(item.puntaje)}
             </div>
-          </div>
-          <div class="rating-stars">
-            ${renderStars(item.puntaje)}
-          </div>
-        `;
-        container.appendChild(cardWrapper);
-      });
+          `;
+          container.appendChild(cardWrapper);
+        });
+      } catch (error) {
+        console.error('Error al cargar los eventos:', error);
+      }
     });
 
     // Función para generar las estrellas según el puntaje (1 a 5)

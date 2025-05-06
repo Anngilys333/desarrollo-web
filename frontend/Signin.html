@@ -42,17 +42,17 @@
           <div class="text-center">
             <img src="Imagenes/Logo1-modified.png" alt="Logo" class="login-logo" />
           </div>
-          <form>
+          <form id="registerForm" action="/backend/api/register.php" method="POST">
             <div class="mb-3">
               <label for="user" class="form-label small text-secondary">User</label>
               <div class="input-group">
-                <input type="text" id="user" class="form-control login-input" placeholder="" />
+                <input type="text" id="user" name="username" class="form-control login-input" placeholder="" required />
               </div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label small text-secondary">Password</label>
               <div class="input-group">
-                <input type="password" id="password" class="form-control login-input" placeholder="" />
+                <input type="password" id="password" name="password" class="form-control login-input" placeholder="" required />
                 <span id="togglePassword" class="input-group-text bg-white border-0" style="cursor:pointer;">
                   <img src="Imagenes/password.png" alt="Password Icon" style="width:20px; height:20px;" />
                 </span>
@@ -61,26 +61,26 @@
             <div class="mb-3">
               <label for="fullnames" class="form-label small text-secondary">Full names</label>
               <div class="input-group">
-                <input type="text" id="fullnames" class="form-control login-input" placeholder="" />
+                <input type="text" id="fullnames" name="fullnames" class="form-control login-input" placeholder="" required />
               </div>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label small text-secondary">Email</label>
               <div class="input-group">
-                <input type="email" id="email" class="form-control login-input" placeholder="" />
+                <input type="email" id="email" name="email" class="form-control login-input" placeholder="" required />
               </div>
             </div>
             <div class="mb-3">
               <label for="phone" class="form-label small text-secondary">Phone</label>
               <div class="input-group">
-                <input type="number" id="phone" class="form-control login-input" placeholder="" />
+                <input type="number" id="phone" name="phone" class="form-control login-input" placeholder="" />
               </div>
             </div>
             <!-- Nuevo campo: Birth date -->
             <div class="mb-3">
               <label for="birthdate" class="form-label small text-secondary">Birth date</label>
               <div class="input-group">
-                <input type="date" id="birthdate" class="form-control login-input" />
+                <input type="date" id="birthdate" name="birthdate" class="form-control login-input" />
               </div>
             </div>
             <!-- Botón ENTER -->
@@ -130,6 +130,33 @@
     document.getElementById("togglePassword").addEventListener("click", function () {
       var passwordInput = document.getElementById("password");
       passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    });
+
+    const registerForm = document.getElementById('registerForm');
+
+    registerForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(registerForm);
+
+      try {
+        const response = await fetch(registerForm.action, {
+          method: 'POST',
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert(result.message);
+          window.location.href = '/login.html'; // Redirigir al login
+        } else {
+          alert(result.message);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Ocurrió un error al procesar el registro.');
+      }
     });
   </script>
 </body>

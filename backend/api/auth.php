@@ -1,6 +1,15 @@
 <?php
-header('Content-Type: application/json');
+
 require_once 'database.php';
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -33,9 +42,10 @@ if ($method === 'POST') {
 
         if ($user) {
             $token = bin2hex(random_bytes(16));
-            $stmt = $pdo->prepare("INSERT INTO sessions (user_id, token) VALUES (?, ?)");
-            $stmt->execute([$user['id'], $token]);
-            echo json_encode(['token' => $token]);
+            $expires_at = time() + 3600; // 1 hour from now
+            $stmt = $pdo->prepare("INSERT INTO sessions (user_id, token, expires_at) VALUES (?, ?, ?)");
+            $stmt->execute([$user['id'], $token, date('Y-m-d H:i:s', $expires_at)]);
+            echo json_encode(['token' => $token, 'expires_at' => $expires_at]);
         } else {
             echo json_encode(['error' => 'Invalid credentials']);
         }

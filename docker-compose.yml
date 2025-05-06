@@ -1,14 +1,20 @@
-version: '3.8'
 services:
-  apache:
-    image: php:8.1-apache
-    container_name: apache_server
-    volumes:
-      - ./backend:/var/www/html
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php_apache
     ports:
       - "8080:80"
+    volumes:
+      - ./frontend:/var/www/html
+      - ./backend/api:/var/www/html/api
+      - ./backend/api:/var/www/html/backend/api
+      - ./backend/api:/var/www/html/backend
     depends_on:
       - db
+    networks:
+      - app-network
 
   db:
     image: mysql:8.0
@@ -18,24 +24,30 @@ services:
       MYSQL_DATABASE: bogota_vibes
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-    ports:
-      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
       - ./database:/docker-entrypoint-initdb.d
-
-  nginx:
-    image: nginx:latest
-    container_name: nginx_server
-    volumes:
-      - ./frontend:/usr/share/nginx/html
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      # Add this line to include mime types
-      - ./nginx/mime.types:/etc/nginx/mime.types
     ports:
-      - "80:80"  # Changed to standard HTTP port for easier access
+      - "3306:3306"
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:80"
     depends_on:
-      - apache
+      - db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   db_data:
