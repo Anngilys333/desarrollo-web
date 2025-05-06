@@ -54,3 +54,23 @@ CREATE TABLE sessions (
     expires_at TIMESTAMP NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+-- Tabla de conciertos
+CREATE TABLE concerts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    image_url VARCHAR(255) NOT NULL,
+    ticket_url VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    location VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla de imágenes del carrusel
+CREATE TABLE carousel_images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image_url VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

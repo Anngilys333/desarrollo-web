@@ -64,27 +64,7 @@
     <!-- Sección de Conciertos Destacados -->
     <div class="container concerts-section">
       <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="concert-card">
-            <img src="Imagenes/Reik.png" alt="Concert 1" />
-          </div>
-          <a href="https://tuboleta.com/es/reik" target="_blank"
-            class="ticket-button d-block text-center mt-2">Get Tickets -></a>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="concert-card">
-            <img src="Imagenes/HOZIER.jpg" alt="Concert 1" />
-          </div>
-          <a href="https://tuboleta.com/es/eventos/hozier-unreal-unearth-tour-2025" target="_blank"
-            class="ticket-button d-block text-center mt-2">Get Tickets -></a>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="concert-card">
-            <img src="ImageneS/Juliana.png" alt="Concert 1" />
-          </div>
-          <a href="https://tuboleta.com/es/eventos/juliana-bienvenidos-la-pista" target="_blank"
-            class="ticket-button d-block text-center mt-2">Get Tickets -></a>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -223,6 +203,53 @@
         document.getElementById("aboutContainer").classList.add("show");
       }, 300); // Se agrega un leve retraso para garantizar que se vea la animación
     });
+  </script>
+  <script>
+    // Cargar conciertos dinámicamente
+    fetch('/backend/api/concerts.php')
+      .then(response => response.json())
+      .then(concerts => {
+        const concertsSection = document.querySelector('.concerts-section .row');
+        concertsSection.innerHTML = ''; // Limpiar contenido existente
+
+        concerts.forEach(concert => {
+          const concertCard = `
+            <div class="col-md-4 mb-4">
+              <div class="concert-card">
+                <img src="${concert.image_url}" alt="${concert.title}" />
+              </div>
+              <a href="${concert.ticket_url}" target="_blank" class="ticket-button d-block text-center mt-2">
+                Get Tickets ->
+              </a>
+            </div>
+          `;
+          concertsSection.innerHTML += concertCard;
+        });
+      })
+      .catch(error => console.error('Error fetching concerts:', error));
+
+    // Cargar imágenes del carrusel dinámicamente
+    fetch('/backend/api/carousel.php')
+      .then(response => response.json())
+      .then(images => {
+        const slider = document.getElementById('slider');
+        slider.innerHTML = ''; // Limpiar contenido existente
+
+        images.forEach(item => {
+          const slide = `
+            <div class="slide">
+              <img src="${item.image_url}" alt="${item.description}">
+              <div class="overlay">${item.description}</div>
+            </div>
+          `;
+          slider.innerHTML += slide;
+        });
+
+        // Reiniciar el slider después de cargar las imágenes
+        currentIndex = 0;
+        updateSlider();
+      })
+      .catch(error => console.error('Error fetching carousel images:', error));
   </script>
 </body>
 

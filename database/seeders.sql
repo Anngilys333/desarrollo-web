@@ -25,3 +25,20 @@ INSERT INTO comments (news_id, user_id, content)
 VALUES
 (1, 1, '¡Qué emocionante! No puedo esperar para asistir.'),
 (2, 2, 'Este concierto será increíble.');
+
+
+-- Poblar la tabla de conciertos
+INSERT INTO concerts (title, description, image_url, ticket_url, date, location) VALUES
+('Reik', 'Concierto de Reik en Bogotá', 'Imagenes/Reik.png', 'https://tuboleta.com/es/reik', '2025-06-15', 'Movistar Arena'),
+('Hozier', 'Hozier Unreal Unearth Tour 2025', 'Imagenes/HOZIER.jpg', 'https://tuboleta.com/es/eventos/hozier-unreal-unearth-tour-2025', '2025-07-20', 'Parque Simón Bolívar'),
+('Juliana', 'Juliana Bienvenidos a la Pista', 'Imagenes/Juliana.png', 'https://tuboleta.com/es/eventos/juliana-bienvenidos-la-pista', '2025-08-10', 'Teatro Colón');
+
+-- Poblar la tabla de imágenes del carrusel
+INSERT INTO carousel_images (image_url, description) VALUES
+('./Imagenes/Ej1.jpg', 'Descripción de Imagen 1'),
+('./Imagenes/Ej1.jpg', 'Descripción de Imagen 2'),
+('./Imagenes/Ej1.jpg', 'Descripción de Imagen 3'),
+('./Imagenes/Ej1.jpg', 'Descripción de Imagen 4'),
+('./Imagenes/Ej1.jpg', 'Descripción de Imagen 5'),
+('./Imagenes/Ej1.jpg', 'Descripción de Imagen 6'),
+('./Imagenes/Ej1.jpg', 'Descripción de Imagen 7');
